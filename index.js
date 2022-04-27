@@ -8,7 +8,7 @@ const cookie = process.env.COOKIE
 const groupId = process.env.GROUP
 
 app.get("/pending", async (req, res) => {
-    fetch(`https://economy.roblox.com/v1/groups/${groupId}/revenue/summary/day`, {
+    fetch(`https://develop.roblox.com/v1/places/${groupId}/stats/Revenue?granularity=Hourly`, {
         headers: {
             cookie: `.ROBLOSECURITY=${cookie}`
         }
@@ -18,7 +18,7 @@ app.get("/pending", async (req, res) => {
             console.log(json)
 
             return res.json({
-                pending: json.pendingRobux
+                pending: json.data.Total.data
             })
         });
 })

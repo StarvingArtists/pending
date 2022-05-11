@@ -33,9 +33,7 @@ app.post("/art/:artId", async (req, res) => {
                     }
                 },
                 "from": {
-                    {
-                        "collectionId": "users"
-                    },
+                    "collectionId": "users",
                     "allDescendants": true
                 }
             }

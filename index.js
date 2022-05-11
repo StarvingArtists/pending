@@ -28,7 +28,7 @@ app.post("/art/:artId", async (req, res) => {
                         },
                         "op": "ARRAY_CONTAINS", 
                         "value": {
-                            "stringValue": artId
+                            "stringValue": req.params.artId
                         }
                     }
                 },

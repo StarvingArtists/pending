@@ -17,4 +17,36 @@ app.get("/users/:userId", async (req, res) => {
         });
 })
 
+app.post("/art/:artId", async (req, res) => {
+    fetch(`https://firestore.googleapis.com/v1beta1/projects/starving-artists/databases/(default)/documents/:runQuery`, {
+        "body": {
+            "structuredQuery": {
+                "where": {
+                    "fieldFilter": { 
+                        "field": {
+                            "fieldPath": "artIds"
+                        },
+                        "op": "ARRAY_CONTAINS", 
+                        "value": {
+                            "stringValue": artId
+                        }
+                    }
+                },
+                "from": {
+                    {
+                        "collectionId": "users"
+                    },
+                    "allDescendants": true
+                }
+            }
+        }
+          })
+        .then(result => result.json())
+        .then(json => {
+            return res.json({
+                art: json
+            })
+        });
+})
+
 app.listen(process.env.PORT || 3030)

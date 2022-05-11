@@ -16,7 +16,7 @@ app.get("/users/:userId", async (req, res) => {
             console.log(json)
 
             return res.json({
-                pending: json.data.Total.data
+                pending: json
             })
         });
 })

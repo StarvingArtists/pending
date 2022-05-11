@@ -38,7 +38,11 @@ app.get("/art/:artId", async (req, res) => {
                     }
                 ]
             }
-        }
+        },
+        headers: {
+    "content-type": "application/json"
+  },
+  method: "POST"
           })
         .then(result => result.json())
         .then(json => {

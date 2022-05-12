@@ -18,7 +18,7 @@ app.get("/users/:userId", async (req, res) => {
 })
 
 app.get("/art/:artId", async (req, res) => {
-    fetch(`https://firestore.googleapis.com/v1beta1/projects/starving-artists/databases/(default)/documents/:runQuery`, {
+    fetch(`https://firestore.googleapis.com/v1beta1/projects/starving-artists/databases/(default)/documents:runQuery`, {
         "body": {
             "structuredQuery": {
                 "where": {

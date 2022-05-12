@@ -16,8 +16,9 @@ app.get("/users/:userId", async (req, res) => {
             })
         });
 })
-
+console.log("hi");
 app.get("/art/:artId", async (req, res) => {
+    console.log("ay");
     console.log(req.params.artId);
     fetch(`https://firestore.googleapis.com/v1beta1/projects/starving-artists/databases/(default)/documents:runQuery`, {
         "body": {

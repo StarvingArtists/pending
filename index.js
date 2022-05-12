@@ -11,7 +11,7 @@ app.get("/users/:userId/art", async (req, res) => {
     fetch(`https://firestore.googleapis.com/v1beta1/projects/starving-artists/databases/(default)/documents/users/${req.params.userId}`)
         .then(result => result.json())
         .then(json => {
-            return res.json(json)
+            return res.json(json.fields)
         });
 })
 
@@ -44,7 +44,7 @@ app.get("/art/:artId", async (req, res) => {
           })
         .then(result => result.json())
         .then(json => {
-            return res.json(json[0].document.fields.art.arrayValue.values.filter(piece => piece.mapValue.fields.ID.stringValue == req.params.artId)[0].mapValue)
+            return res.json(json[0].document.fields.art.arrayValue.values.filter(piece => piece.mapValue.fields.ID.stringValue == req.params.artId)[0].mapValue.fields)
         });
 })
 

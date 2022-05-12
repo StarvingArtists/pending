@@ -18,6 +18,7 @@ app.get("/users/:userId", async (req, res) => {
 })
 
 app.get("/art/:artId", async (req, res) => {
+    console.log(req.params.artId);
     fetch(`https://firestore.googleapis.com/v1beta1/projects/starving-artists/databases/(default)/documents:runQuery`, {
         "body": {
             "structuredQuery": {
@@ -40,9 +41,9 @@ app.get("/art/:artId", async (req, res) => {
             }
         },
         headers: {
-    "content-type": "application/json"
+    "Content-Type": "application/json"
   },
-  method: "POST"
+  method: "post"
           })
         .then(result => result.json())
         .then(json => {

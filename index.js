@@ -44,7 +44,7 @@ app.get("/art/:artId", async (req, res) => {
           })
         .then(result => result.json())
         .then(json => {
-            return res.json(json.art[0].document.fields.art.arrayValue.values.filter(piece => piece.mapValue.fields.ID.stringValue == req.params.artId)[0])
+            return res.json(json[0].document.fields.art.arrayValue.values.filter(piece => piece.mapValue.fields.ID.stringValue == req.params.artId)[0])
         });
 })
 

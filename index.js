@@ -16,12 +16,10 @@ app.get("/users/:userId", async (req, res) => {
             })
         });
 })
-console.log("hi");
+
 app.get("/art/:artId", async (req, res) => {
-    console.log("ay");
-    console.log(req.params.artId);
-    fetch(`https://firestore.googleapis.com/v1beta1/projects/starving-artists/databases/(default)/documents:runQuery`, {
-        "body": {
+    fetch(`https://firestore.googleapis.com/v1beta1/projects/starving-artists/databases/(default)/documents/:runQuery`, {
+        "body": JSON.stringify({
             "structuredQuery": {
                 "where": {
                     "fieldFilter": { 
@@ -40,11 +38,11 @@ app.get("/art/:artId", async (req, res) => {
                     }
                 ]
             }
-        },
+        }),
         headers: {
-    "Content-Type": "application/json"
+    "content-type": "application/json"
   },
-  method: "post"
+  method: "POST"
           })
         .then(result => result.json())
         .then(json => {

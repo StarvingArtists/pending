@@ -7,7 +7,7 @@ require('dotenv').config()
 const cookie = process.env.COOKIE
 const groupId = process.env.GROUP
 
-app.get("/users/:userId", async (req, res) => {
+app.get("/users/:userId/art", async (req, res) => {
     fetch(`https://firestore.googleapis.com/v1beta1/projects/starving-artists/databases/(default)/documents/users/${req.params.userId}`)
         .then(result => result.json())
         .then(json => {

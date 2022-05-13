@@ -11,7 +11,7 @@ app.get("/users/:userId/art", async (req, res) => {
     fetch(`https://firestore.googleapis.com/v1beta1/projects/starving-artists/databases/(default)/documents/users/${req.params.userId}`)
         .then(result => result.json())
         .then(json => {
-            return res.json(json.fields.art)
+            return art: res.json(json.fields.art)
         });
 })
 

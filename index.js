@@ -9,9 +9,9 @@ const groupId = process.env.GROUP
 
 app.get("/users/:userId/art", async (req, res) => {
     fetch(`https://firestore.googleapis.com/v1beta1/projects/starving-artists/databases/(default)/documents/users/${req.params.userId}`)
-        .then(result => result.json())
-        .then(json => {
-            return res.json({art: json.fields.art})
+        .then(result => result.json()) .then(json => { return res.json({art: json.fields.art}) })
+        .catch((error) = > {
+            return res.status(400)
         });
 })
 
@@ -42,9 +42,9 @@ app.get("/art/:artId", async (req, res) => {
   },
   method: "POST"
           })
-        .then(result => result.json())
-        .then(json => {
-            return res.json(json[0].document.fields.art.arrayValue.values.filter(piece => piece.mapValue.fields.ID.stringValue == req.params.artId)[0].mapValue.fields)
+    .then(result => result.json()) .then(json => { return res.json(json[0].document.fields.art.arrayValue.values.filter(piece => piece.mapValue.fields.ID.stringValue == req.params.artId)[0].mapValue.fields) })
+        .catch((error) = > {
+            return res.status(400)
         });
 })
 
